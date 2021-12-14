@@ -1,1 +1,4 @@
-Word Count= 4
+Word Count= 5
+Letter Count= 16
+Digit Count= 5
+Other Count= 4
