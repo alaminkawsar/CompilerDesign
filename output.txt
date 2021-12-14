@@ -2,3 +2,7 @@ Word Count= 5
 Letter Count= 16
 Digit Count= 5
 Other Count= 4
+
+Letters are: M d T a r e q Z a m a n P a r t 
+Digits are: 3 2 0 1 1 
+Others are: . , - , 
