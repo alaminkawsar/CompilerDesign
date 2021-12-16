@@ -1,0 +1,6 @@
+5
+a*b+c+dd*eeeeeeeeeee/e
+a+b++c*dd
+g+g*h/d 
+p*p**p 
+a/b*c
