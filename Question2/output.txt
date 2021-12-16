@@ -1,5 +1,12 @@
-Integer? YES
+Integer? NO
 
 Short Integer? NO
 
-Long Integer? YES
+Long Integer? NO
+
+Float Variable? NO
+
+
+float number? NO
+
+Double Number? NO
