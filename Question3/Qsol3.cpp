@@ -17,7 +17,6 @@ void solve()
     cout<<"Input: "<<str;
     printf("\t\tOutput: ");
     int n=sizeof(keyword)/sizeof(keyword[0]);
-    //cout<<n<<endl;
     map<string,string>key,arithOper,logicOper;
     for(int i=0;i<n;i++){
         key[keyword[i]] = "Keyword";
@@ -32,7 +31,7 @@ void solve()
         arithOper[arithOperator[i]]="Arithmetic Operator";
     }
     if(arithOper[str]=="Arithmetic Operator"){
-        printf("Keyword\n");
+        printf("Arithmetic Operator\n");
         return;
     }
 
@@ -43,6 +42,7 @@ void solve()
     }
     if(logicOper[str]=="Logical Operator"){
         printf("Logical Operator\n");
+        return;
     }
     int flag=0;
     for(int i=0;i<str.size();i++){
