@@ -1,0 +1,7 @@
+INPUT: a*b+c
+
+
+Syntax Tree: 
+E*E
+a*E+E
+a*b+c
