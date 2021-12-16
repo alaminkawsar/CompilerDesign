@@ -10,6 +10,8 @@ Others are: . , - ,
 Number of Vowels: 5
 Number of Consonant: 11
 
-Vowels are: a e a a a 
-Consonant are: M d T a r e q Z a m a n P a r t 
+Vowels are: a e 
+Consonant are: M d T r q Z n P 
 
+First Letter Vowel Words are: 
+First Letter Consonant Words are: Md Tareq Zaman Part 
