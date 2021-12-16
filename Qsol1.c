@@ -108,6 +108,37 @@ void activityD(){
     printf("\n\n");
 }
 
+void activityE(){
+    int j=0;
+    char word[40];
+    printf("First Letter Vowel Words are: ");
+    for(int i=0;st[i];i++){
+        if(isLetter(st[i])){
+            word[j++]=st[i];
+        }else{
+            if(j>0 && isVowel(word[0])){
+                word[j]='\0';
+                printf("%s ",word);
+            }
+            j=0;
+        }
+    }
+    printf("\nFirst Letter Consonant Words are: ");
+    j=0;
+    for(int i=0;st[i];i++){
+        if(isLetter(st[i])){
+            word[j++]=st[i];
+        }else{
+            if(j>0 && !isVowel(word[0])){
+                word[j]='\0';
+                printf("%s ",word);
+            }
+            j=0;
+        }
+    }
+    
+}
+
 int main()
 {
     freopen("input.txt","r",stdin);
@@ -118,6 +149,7 @@ int main()
     activityB();
     activityC();
     activityD();
+    activityE();
 
 
 
