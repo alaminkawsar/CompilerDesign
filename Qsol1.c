@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<string.h>
+#include<ctype.h>
+
 char st[100];
 
 int isLetter(char ch){
