@@ -1,5 +1,5 @@
 Input: 646.45		Output: Float
 Input: do		Output: Keyword
-Input: 554		Output: Constant
+Input: 554		Output: Integer
 Input: abc		Output: Identifier
 Input: +		Output: Keyword

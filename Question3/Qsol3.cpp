@@ -53,7 +53,7 @@ void solve()
         if(str[i]>='0' and str[i]<='9') flag++;
     }
     if(flag==str.size()){
-        printf("Constant\n");
+        printf("Integer\n");
     }else printf("Identifier\n");
 
     
