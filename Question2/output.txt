@@ -1,0 +1,5 @@
+Integer? YES
+
+Short Integer? NO
+
+Long Integer? YES
