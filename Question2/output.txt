@@ -1,12 +1,18 @@
-Integer? NO
+a)Integer? NO
 
-Short Integer? NO
+b)Short Integer? NO
 
-Long Integer? NO
+c)Long Integer? NO
 
-Float Variable? NO
+d)Float Variable? NO
 
 
 float number? NO
 
 Double Number? NO
+Character Variable? NO
+
+Binary Variable? NO
+
+Binary Number? YES
+

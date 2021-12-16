@@ -34,19 +34,19 @@ int main()
     scanf("%[^\n]s",st);
 
     //solution (a)
-    printf("Integer? ");
+    printf("a)Integer? ");
     if((st[0]>='i' && st[0]<='n') || (st[0]>='I' && st[0]<='N')){
         printf("YES\n\n");
     }else printf("NO\n\n");
 
     //solution (b)
-    printf("Short Integer? ");
+    printf("b)Short Integer? ");
     if(st[0]!='0' && strlen(st)<=4 && !isInvalid()){
         printf("YES\n\n");
     }else printf("NO\n\n");
 
     //solution (c)
-    printf("Long Integer? ");
+    printf("c)Long Integer? ");
     if(st[0]!=0 && strlen(st)>=5 && isAllDigit() && !isInvalid()){
         printf("YES\n");
     }else printf("NO\n\n");
@@ -54,25 +54,24 @@ int main()
     
     //solution (d)
 
-    printf("Float Variable? ");
-    if((st[0]>'h' && st[0]<'o')||(st[0]>'H' && st[0]<'O')){
-        printf("NO\n\n");
-    }else{
-        int flag=0;
+    printf("d)Float Variable? ");
+    if(((st[0]<='h' && st[0]>='a')||(st[0]>='O' && st[0]<='Z')) || (st[0]>='o' && st[0]<='z') ||(st[0]<='H' && st[0]>='A')){
+        int flag = 0;
         for(int i=0;st[i];i++){
             if(isInvalid()){
                 flag=1;
             }
         }
-        if(flag){
-            printf("NO\n\n");
-        }else
-            printf("YES\n\n");
+        if(!flag) printf("YES\n\n");
+        else printf("NO\n\n");
+    }else{
+        printf("NO\n\n");
+       
     }
 
 
     //solution (e)
-    printf("\nfloat number? ");
+    printf("\ne)float number? ");
     int len = strlen(st);
     if(st[0] == '0' && st[1]== '.' && strlen(st) == 4){
         printf("YES\n\n");
@@ -89,7 +88,7 @@ int main()
 
 
     //solution (f)
-    printf("Double Number? ");
+    printf("f)Double Number? ");
     if(st[0] == '0' && st[1] == '.' && len >= 5){
         printf("Yes\n");
     }else if(st[0] != '0'){
@@ -109,10 +108,45 @@ int main()
 
     //solution (g)
 
+    printf("g)Character Variable? ");
     if(st[0]=='c' && st[1]=='h' && st[2]=='_' && len>=4){
         int flag=0;
         for(int i=3;st[i];i++){
-            
+            if(!isInvalid()){
+                flag=1;
+            }
         }
-    }
+        if(flag) printf("NO\n\n");
+        else printf("YES\n\n");
+    }else printf("NO\n\n");
+
+    //solution(h)
+    printf("h)Binary Variable? ");
+    if(st[0]=='b' && st[1]=='n' && st[2]=='_' && len>=4){
+        int flag=0;
+        for(int i=3;st[i];i++){
+            if(!isInvalid()){
+                flag=1;
+            }
+        }
+        if(flag) printf("NO\n\n");
+        else printf("YES\n\n");
+    }else printf("NO\n\n");
+
+    //solution (i)
+    printf("i)Binary Number? ");
+    if(st[0]=='0' && len>=2){
+        int flag=0;
+        for(int i=0;st[i];i++){
+            if(st[i]=='0' || st[i]=='1'){
+                continue;
+            }else flag=1;
+        }
+        if(flag)
+            printf("NO\n\n");
+        else printf("YES\n\n");
+    }else printf("NO\n\n");
+
+
+
 }
