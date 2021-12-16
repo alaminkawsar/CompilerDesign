@@ -6,3 +6,10 @@ Other Count= 4
 Letters are: M d T a r e q Z a m a n P a r t 
 Digits are: 3 2 0 1 1 
 Others are: . , - , 
+
+Number of Vowels: 5
+Number of Consonant: 11
+
+Vowels are: a e a a a 
+Consonant are: M d T a r e q Z a m a n P a r t 
+

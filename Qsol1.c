@@ -12,6 +12,12 @@ int isDigit(char ch){
     else return 0;
 }
 
+int isVowel(char ch){
+    if(ch == 'a' || ch == 'A'||ch == 'e' || ch == 'E' ||ch == 'i' ||ch == 'I' || ch == 'o'|| ch == 'O'||ch == 'u'||ch == 'U'){
+        return 1;
+    }else return 0;
+}
+
 
 void activityA(){
 
@@ -46,7 +52,7 @@ void activityA(){
     printf("Word Count= %d\n",wordCount);
     printf("Letter Count= %d\n",letterCount);
     printf("Digit Count= %d\n",digitCount);
-    printf("Other Count= %d\n",otherCount);
+    printf("Other Count= %d\n\n",otherCount);
 }
 
 void activityB(){
@@ -70,9 +76,36 @@ void activityB(){
             printf("%c ",st[i]);
         }
     }
-    printf("\n");
+    printf("\n\n");
+}
 
-    
+void activityC(){
+    int countVowel=0,countConsonant=0;
+    for(int i=0;st[i];i++){
+        if(isVowel(st[i])) countVowel++;
+        else if(isLetter(st[i])) countConsonant++;
+    }
+    printf("Number of Vowels: %d\n",countVowel);
+    printf("Number of Consonant: %d\n\n",countConsonant);
+}
+
+void activityD(){
+    int marka[26]={0};
+    printf("Vowels are: ");
+    for(int i=0;st[i];i++){
+        if(isVowel(st[i]) && (marka[tolower(st[i])-'a']==0)){
+            marka[tolower(st[i])-'a']=1;
+            printf("%c ",st[i]);
+        }
+    }
+    printf("\nConsonant are: ");
+    for(int i=0;st[i];i++){
+        if(isLetter(st[i]) && (marka[tolower(st[i])-'a']==0)){
+            marka[tolower(st[i])-'a']=1;
+            printf("%c ",st[i]);
+        }
+    }
+    printf("\n\n");
 }
 
 int main()
@@ -80,11 +113,12 @@ int main()
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
     scanf("%[^\n]s",st);
+
     activityA();
-
-    printf("\n");
-
     activityB();
+    activityC();
+    activityD();
+
 
 
 }
