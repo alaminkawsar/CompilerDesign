@@ -4,15 +4,16 @@ b)Short Integer? NO
 
 c)Long Integer? NO
 
-d)Float Variable? NO
+d)Float Variable? YES
 
 
-float number? NO
+e)float number? NO
 
-Double Number? NO
-Character Variable? NO
+f)Double Number? NO
 
-Binary Variable? NO
+g)Character Variable? NO
 
-Binary Number? YES
+h)Binary Variable? NO
+
+i)Binary Number? NO
 

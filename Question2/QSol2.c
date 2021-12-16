@@ -2,7 +2,23 @@
 #include<string.h>
 #include<ctype.h>
 
+
 char st[100];
+
+int Check(){
+    int dot=0,under_score=0;
+    for(int i=0;st[i];i++){
+        if(st[i]=='.') dot++;
+        else if(st[i]=='_') under_score++;
+        else if((st[i]>='a' && st[i]<='z') || (st[i]>='A' && st[i]<='Z') || (st[i]>='0' && st[i]<='9')){
+            continue;
+        }else return 1;
+    }
+    if(dot>1 || under_score>1)
+        return 1;
+    else
+        return 0;
+}
 
 int isInvalid(){
     for(int i=0;st[i];i++){
@@ -21,10 +37,14 @@ int isLetter(char ch){
 
 int isAllDigit(){
     for(int i=0;st[i];i++){
-        if(st[i]<='0' && st[i]>='9')
+        if(st[i]<='0' || st[i]>='9')
             return 0;
     }
     return 1;
+}
+
+int Integer_variable(){
+
 }
 
 int main()
@@ -32,6 +52,13 @@ int main()
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
     scanf("%[^\n]s",st);
+
+    int int_var,short_num=0,long_num=0,float_var=0,float_num=0,double_num=0,char_var=0,bin_var,bin_num=0,Invalid=0;
+    //Invalid check
+    if(Check()){
+        puts("YES,INVALID INPUT\n\n");
+        return 0;
+    }
 
     //solution (a)
     printf("a)Integer? ");
@@ -47,7 +74,7 @@ int main()
 
     //solution (c)
     printf("c)Long Integer? ");
-    if(st[0]!=0 && strlen(st)>=5 && isAllDigit() && !isInvalid()){
+    if(st[0]!='0' && strlen(st)>=5 && isAllDigit()){
         printf("YES\n");
     }else printf("NO\n\n");
 
@@ -81,7 +108,7 @@ int main()
             if(!isdigit(st[i])) dot++;
             if(dot && isdigit(st[i])) cnt_digit++;
         }
-        if(dot==1 && cnt_digit==2) printf("Yes\n");
+        if(dot==1 && cnt_digit==2) printf("Yes\n\n");
         else printf("NO\n\n");
     }else printf("NO\n\n");
 
@@ -100,10 +127,10 @@ int main()
             if(dot && isdigit(st[i])) cnt_dig++;
         }
         if(dot==1 && cnt_dig>=3){
-            printf("YES\n");
-        }else printf("NO\n");
+            printf("YES\n\n");
+        }else printf("NO\n\n");
 
-    }else printf("NO\n");
+    }else printf("NO\n\n");
 
 
     //solution (g)
