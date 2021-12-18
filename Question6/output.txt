@@ -1,0 +1,20 @@
+E -> Te
+e -> +Te|x
+T -> Ft
+t -> *Ft|x
+F -> (E)|i
+
+
+
+First(X):
+FIRST(E) = {i,(}
+FIRST(e) = {+,x}
+FIRST(T) = {(,i}
+FIRST(t) = {*,x}
+FIRST(F) = {(,i}
+
+FOLLOW(E)$
+FOLLOW(e)
+FOLLOW(T)
+FOLLOW(t)
+FOLLOW(F)

@@ -125,6 +125,11 @@ void activityE(){
             j=0;
         }
     }
+    if(j>0 && isVowel(word[0])){
+        word[j]='\0';
+        printf("%s ",word);
+    }
+
     printf("\nFirst Letter Consonant Words are: ");
     j=0;
     for(int i=0;st[i];i++){
@@ -137,6 +142,10 @@ void activityE(){
             }
             j=0;
         }
+    }
+    if(j>0 && !isVowel(word[0])){
+        word[j]='\0';
+        printf("%s ",word);
     }
     
 }

@@ -62,7 +62,7 @@ int main()
 
     //solution (a)
     printf("a)Integer? ");
-    if((st[0]>='i' && st[0]<='n') || (st[0]>='I' && st[0]<='N')){
+    if(((st[0]>='i' && st[0]<='n') || (st[0]>='I' && st[0]<='N')) && !isInvalid()){
         printf("YES\n\n");
     }else printf("NO\n\n");
 

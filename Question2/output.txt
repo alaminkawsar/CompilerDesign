@@ -4,7 +4,7 @@ b)Short Integer? NO
 
 c)Long Integer? NO
 
-d)Float Variable? YES
+d)Float Variable? NO
 
 
 e)float number? NO
