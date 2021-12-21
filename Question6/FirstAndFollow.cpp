@@ -5,46 +5,65 @@ const int sz = 4e5+5;
 
 /*to reduice complexity
 
-Terminals = Capital Letter
-Inverse Terminal = small Letter
-epsilon = p
+Non Terminals = Capital Letter
+Inverse Non Terminal = small Letter
+epsilon = x
 id = i
 
 */
 int n;
-vector<string>adj[10];
-
-map<string,int>has;
-map<string,int>Terminal;
-map<string,int>checkNonTerminal;
+string ls[10];
+map<char,int>NonTerminal;
 map<int,int>followFound;
-string FirstOfNonTerminal[10];
-string NonTerminal[10];
-string Follow[10];
+string FIRST[10];
+string FOLLOW[10];
+string NTerminal;
 
-string FOLLOW(int i){
-    if(followFound[i]) return Follow[i];
-    followFound[i]=1;
-    //Find Follow of every non Terminal
-    for(int x=0;x<n;x++){
-        for(int j=0;j<adj[x].size();j++){
-            //cout<<adj[x][j];
-            if(adj[x][j]=="E") cout<<adj[x][j]+" "+NonTerminal[i]<<endl;
-            if(adj[x][j]==NonTerminal[i]){
-                if(checkNonTerminal[adj[x][j+1]]){
-                    int y=has[adj[i][j+1]];
-                    Follow[i]+=FirstOfNonTerminal[y];
-                    //goto a;
-                }else if(Terminal[adj[i][j+1]]){
-                    Follow[i]+=adj[i][j];
+string follow(int x){
+    if(followFound[x]) return FOLLOW[x];
+    followFound[x]=1;
+    int flag=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<ls[i].size();j++){
+            if(ls[i][j]==NTerminal[x]){
+                //check Non Terminal
+                if(j+1<ls[i].size() and NonTerminal.count(ls[i][j+1])>0){                
+                    int indx=NonTerminal[ls[i][j+1]];
+                    //Handling epsilon and take FIRST(x)
+                    //printf("CHECK %c\n",ls[i][j+1]);
+                    j++;
+                    for(int y=0;j<ls[i].size() and y<FIRST[indx].size();y++){
+                        if(NonTerminal.count(ls[i][j])==0){
+                            //handling terminal value
+                            FOLLOW[x]+=ls[i][j];
+                            break;
+                        }
+                        else if(FIRST[indx][y]!='x'){
+                            FOLLOW[x]+=FIRST[indx][y];
+                        }
+                        else{
+                            j++;
+                        }
+                        if(j==ls[i].size()){
+                            //handling last character
+                            FOLLOW[x]+=follow(i);
+                            break;
+                        }
+                        if(NonTerminal.count(ls[i][j+1])>0) indx=NonTerminal[ls[i][j]];
+                    }
+                }else{
+                    if(j+1==ls[i].size() or ls[i][j+1]=='|'){//last character
+                        if(i!=x){
+                            FOLLOW[x]+=follow(i);
+                        }
+                    }
+                    else FOLLOW[x]+=ls[i][j+1];
+                    break;
                 }
             }
-
         }
-        //cout<<" "<<NonTerminal[i]<<endl;
-        //a:break;
     }
-    return Follow[i];
+    return FOLLOW[x];
 }
 
 void solve()
@@ -52,60 +71,63 @@ void solve()
 
     //Input Grammer
     cin>>n;
-    string nonterminal,values;
+    char NonTer;
     int ter=0;
     for(int i=0;i<n;i++){
-        cin>>nonterminal>>values;
-        checkNonTerminal[nonterminal]=1;
-        if(has[nonterminal]==0){
-            has[nonterminal]=ter++;
+        cin>>NonTer>>ls[i];
+        NonTerminal[NonTer]=1;
+        if(NonTerminal[NonTer]==0){
+            NonTerminal[NonTer]==ter++;
         }
-        NonTerminal[i]=nonterminal;
-        int indx=has[nonterminal];
-        adj[indx].push_back(values);
+        NTerminal+=NonTer;
+        NonTerminal[i]=NonTer;        
     }
+    
     //check output
     for(int i=0;i<n;i++){
-        cout<<NonTerminal[i]+" -> ";
-        for(int j=0;j<adj[i].size();j++){
-            cout<<adj[i][j];
-            if(checkNonTerminal[adj[i][j]]==0){
-                Terminal[adj[i][j]]=1;
-            }
-        }
-        cout<<endl;
+        printf("%c -> ",NonTerminal[i]);
+        cout<<ls[i]<<endl;
     }
-
-
-    //Input First
-    cout<<endl;
+    //Input FIRST(X)
+     cout<<endl;
+     
     string s;
     getline(cin,s);
     for(int i=0;i<n;i++){
         getline(cin,s);
+        cout<<s<<endl;
         for(int j=0;j<s.size();j++){
-            if(s[j]!=' ')
-                FirstOfNonTerminal[i]+=s[j];
+            if(s[j]==' ') continue;
+            FIRST[i]+=s[j];
         }
     }
-    printf("\n\nFirst(X):\n");
+    //show first
     for(int i=0;i<n;i++){
-        //cout<<FirstOfNonTerminal[i]<<endl;
-        cout<<"FIRST("+NonTerminal[i]+") = {";
-        for(int j=0;j<FirstOfNonTerminal[i].size();j++){
-            printf("%c",FirstOfNonTerminal[i][j]);
-            if(FirstOfNonTerminal[i].size()>j+1) printf(",");
-        }
-        printf("}\n");
+        printf("First(%c) = ",NTerminal[i]);
+        cout<<FIRST[i]<<endl;
     }
 
-    Follow[0]+='$';
-    for(int i=0;i<n;i++){
-        string p = FOLLOW(i);
-    }
+    //find follow
     cout<<endl;
+    FOLLOW[0]+='$';
     for(int i=0;i<n;i++){
-        cout<<"FOLLOW("+NonTerminal[i]+")"+Follow[i]<<endl;
+        string p = follow(i);
+        //printf("FOLLOW(%c) = ",NTerminal[i]);
+        //cout<<FOLLOW[i]<<endl;
+    }
+    //Remove Duplicate FOLLOWS VALUES
+    
+    for(int i=0;i<n;i++){
+        set<char>st;
+        for(int j=0;j<FOLLOW[i].size();j++){
+            st.insert(FOLLOW[i][j]);
+        }
+        cout<<NTerminal[i]<<" = {";
+        for(auto it: st){
+            if(it=='i') printf("id ");
+            else printf("%c ",it);
+        }
+        printf("}\n");
     }
 
     

@@ -4,17 +4,19 @@ T -> Ft
 t -> *Ft|x
 F -> (E)|i
 
+i (
++ x
+( i
+* x
+( i
+First(E) = i(
+First(e) = +x
+First(T) = (i
+First(t) = *x
+First(F) = (i
 
-
-First(X):
-FIRST(E) = {i,(}
-FIRST(e) = {+,x}
-FIRST(T) = {(,i}
-FIRST(t) = {*,x}
-FIRST(F) = {(,i}
-
-FOLLOW(E)$
-FOLLOW(e)
-FOLLOW(T)
-FOLLOW(t)
-FOLLOW(F)
+E = {$ ) }
+e = {$ ) }
+T = {$ ) + }
+t = {$ ) + }
+F = {$ ) + }
