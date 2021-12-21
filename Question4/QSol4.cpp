@@ -11,8 +11,6 @@ void solve()
     cout<<"INPUT: "<<s<<"\n\n\n";
     cout<<"Syntax Tree: "<<"\n";
 
-    map<char,int>indx;
-
     int n = s.size();
     for(int i=0;i<n;i++){
         if(s[i]=='+'){ 
